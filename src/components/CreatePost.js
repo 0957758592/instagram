@@ -22,7 +22,7 @@ function CreatePost({ user, handleAddPost }) {
 
     return (
         <div >
-            <hr />
+            <h2>Create Post </h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -36,10 +36,6 @@ function CreatePost({ user, handleAddPost }) {
                 />
                 <button type='submit'>submit</button>
             </form>
-            {/* <p>{content}</p> */}
-            {/* {image && <img src={URL.createObjectURL(image)} alt="IMG"
-                style={{ height: 100, width: 200, objectFit: "cover" }} />} */}
-
         </div>
     );
 }

@@ -26,7 +26,7 @@ function App() {
     <div className="App">
       <Header user={user} setUser={setUser} />
       <CreatePost user={user} handleAddPost={handleAddPost} posts={posts} />
-      <PostList posts={posts} />
+      <PostList user={user} posts={posts} />
     </div>
   );
 }
