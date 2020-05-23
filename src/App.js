@@ -1,24 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import PostList from './components/PostList'
+import Login from './components/Login'
+import Header from './components/Header'
+import CreatePost from './components/CreatePost'
+
+
+
+const funcSet = new Set();
+
 
 function App() {
+
+  const [user, setUser] = React.useState('')
+  const [posts, setPosts] = React.useState([])
+  
+  React.useEffect(() => {
+    document.title = user ? `${user}'s Feed` : 'Please Login';
+  }, [user])
+
+
+  const handleAddPost = React.useCallback(newPost => {
+    setPosts([newPost, ...posts])
+  }, [posts]);
+
+  if (!user) {
+    return <Login setUser={setUser}/>
+  }
+
+
+  funcSet.add(handleAddPost)
+  console.log(funcSet)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header user={user} setUser={setUser} />
+      <CreatePost user={user} handleAddPost={handleAddPost} posts={posts} />
+      <PostList posts={posts} />
     </div>
   );
 }
