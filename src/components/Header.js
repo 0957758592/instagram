@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Header({ user, setUser }) {
-    
+
 
     function handleClick(e) {
         setUser("")

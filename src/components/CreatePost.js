@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CreatePost({ user, handleAddPost}) {
+function CreatePost({ user, handleAddPost }) {
     const [content, setContent] = React.useState("")
     const [image, setImage] = React.useState(null)
 
@@ -13,15 +13,13 @@ function CreatePost({ user, handleAddPost}) {
         if (image || content) {
             const post = { content, image, user };
             handleAddPost(post);
-        // const newPosts = [post, ...posts];
-        // setPosts(newPosts);
-        setContent('')
-        inputImgRef.current.value = ''
-        setImage('')
+            setContent('')
+            inputImgRef.current.value = ''
+            setImage('')
         }
     }
 
-    
+
     return (
         <div >
             <hr />
@@ -35,7 +33,7 @@ function CreatePost({ user, handleAddPost}) {
                     type="file"
                     onChange={e => setImage(e.target.files[0])}
                     ref={inputImgRef}
-                    />
+                />
                 <button type='submit'>submit</button>
             </form>
             {/* <p>{content}</p> */}

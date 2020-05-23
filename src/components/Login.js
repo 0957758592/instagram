@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Login({setUser}) {
+function Login({ setUser }) {
 
-const [username, setUsername] = React.useState("")
+    const [username, setUsername] = React.useState("")
 
     function handleSubmit(e) {
         e.preventDefault();

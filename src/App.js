@@ -8,7 +8,7 @@ function App() {
 
   const [user, setUser] = React.useState('')
   const [posts, setPosts] = React.useState([])
-  
+
   React.useEffect(() => {
     document.title = user ? `${user}'s Feed` : 'Please Login';
   }, [user])
@@ -19,7 +19,7 @@ function App() {
   }, [posts]);
 
   if (!user) {
-    return <Login setUser={setUser}/>
+    return <Login setUser={setUser} />
   }
 
   return (
