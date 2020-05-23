@@ -4,11 +4,6 @@ import Login from './components/Login'
 import Header from './components/Header'
 import CreatePost from './components/CreatePost'
 
-
-
-const funcSet = new Set();
-
-
 function App() {
 
   const [user, setUser] = React.useState('')
@@ -26,10 +21,6 @@ function App() {
   if (!user) {
     return <Login setUser={setUser}/>
   }
-
-
-  funcSet.add(handleAddPost)
-  console.log(funcSet)
 
   return (
     <div className="App">
