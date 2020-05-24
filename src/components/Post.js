@@ -10,7 +10,7 @@ function Post({ image, content, user }) {
             {image && (
                 <img
                     src={URL.createObjectURL(image)}
-                    alt="Post Image"
+                    alt="Post"
                     style={{ height: 100, width: 200, objectFit: 'cover' }}
                 />
             )}
