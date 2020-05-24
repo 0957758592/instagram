@@ -5,15 +5,19 @@ function CreatePost({ user }) {
     const { dispatch } =  React.useContext(PostContext)
     const [content, setContent] = React.useState("")
     const [image, setImage] = React.useState(null)
-
+    const id = `f${(~~(Math.random() * 1e8)).toString(16)}`;
     const inputImgRef = React.useRef()
 
 
     function handleSubmit(e) {
         e.preventDefault();
 
+        console.log("MATH ", ~~(Math.random() ))
+        console.log("MATH2 ", ~~(Math.random() * 1e8))
+        console.log("123  ", "123".toString(16))
+
         if (image || content) {
-            const post = { content, image, user };
+            const post = { content, image, user, id };
             dispatch({ type: "ADD_POST", payload: { post }})
             // handleAddPost(post);
             setContent('')

@@ -4,8 +4,8 @@ import Post from './Post'
 function PostList({ posts }) {
     return (
         <div >
-            {posts && posts.map((post, i) => (
-                <Post key={i} {...post} />
+            {posts && posts.map(post => (
+                <Post key={post.id} {...post} />
             ))}
         </div>
     );
