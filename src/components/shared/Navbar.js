@@ -45,6 +45,10 @@ function Search() {
   const [query, setQuery] = React.useState('');
   let loading = false;
 
+  function handleClearInput() {
+    setQuery('')
+  }
+
   return (
     <Hidden xsDown>
       <InputBase
@@ -55,7 +59,7 @@ function Search() {
           loading ? (
             <LoadingIcon />
           ) : (
-              <span className={classes} />
+              <span onClick={handleClearInput} className={classes.clearIcon} />
             )}
         placeholder='Search...'
         value={query}
