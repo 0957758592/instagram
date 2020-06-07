@@ -17,7 +17,7 @@ function Navbar({ minimalNavbar }) {
         <Logo />
         {minimalNavbar && (
           <>
-            <Search />
+            <Search history={history}/>
             <Links path={path} />
           </>
         )}
@@ -40,7 +40,7 @@ function Logo() {
   );
 }
 
-function Search() {
+function Search({history}) {
   const classes = useNavbarStyles();
   const [loading, setLoading] = React.useState(false)
   const [results, setResults] = React.useState([])
@@ -73,6 +73,10 @@ function Search() {
                   key={result.id}
                   item
                   className={classes.resultLink}
+                  onClick={()=>{
+                    history.push(`/${result.username}`)
+                    handleClearInput()
+                  }}
                 >
                   <div className={classes.resultWrapper}>
                     <div className={classes.avatarWrapper}>
