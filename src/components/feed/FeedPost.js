@@ -56,7 +56,6 @@ function FeedPost({ post }) {
               />) : (
                 <div className={classes.captionWrapper}>
                   <HTMLEllipsis
-
                     unsafeHTML={caption}
                     className={classes.caption}
                     maxLine='0'
@@ -120,14 +119,14 @@ function LikeButton() {
   const onClick = liked ? handleUnlike : handleLike
 
   function handleUnlike() {
-    return !handleLike();
+    setLiked(false);
   }
 
   function handleLike() {
-    setLiked(!liked);
+    setLiked(true);
   }
 
-  return <Icon onDoubleClick={onClick} className={className}/>
+  return <Icon onClick={onClick} className={className}/>
 }
 
 function SaveButton() {
