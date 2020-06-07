@@ -3,7 +3,7 @@ import { useFeedPostStyles } from "../../styles";
 import UserCard from "../shared/UserCard"
 import { MoreIcon, CommentIcon, ShareIcon, UnlikeIcon, LikeIcon, RemoveIcon, SaveIcon } from "../../icons"
 import { Link } from 'react-router-dom'
-import { Typography, Button, Hidden, Divider } from "@material-ui/core"
+import { Typography, Button, Hidden, Divider, TextField } from "@material-ui/core"
 import HTMLEllipsis from 'react-lines-ellipsis/lib/html'
 
 function FeedPost({ post }) {
@@ -16,7 +16,7 @@ function FeedPost({ post }) {
       <article className={classes.article}>
         {/* Feed Post Header */}
         <div className={classes.postHeader}>
-          <UserCard user={user}/>
+          <UserCard user={user} />
           <MoreIcon
             className={classes.moreIcon}
           />
@@ -33,7 +33,7 @@ function FeedPost({ post }) {
               <CommentIcon />
             </Link>
             <ShareIcon />
-            <SaveButton/>
+            <SaveButton />
           </div>
           <Typography className={classes.like} variant="subtitle2" >
             {likes === 1 ? '1 like' : `${likes} likes`}
@@ -104,7 +104,7 @@ function FeedPost({ post }) {
         </div>
         <Hidden xsDown>
           <Divider />
-          <Comment/>
+          <Comment />
         </Hidden>
       </article>
     </>
@@ -126,7 +126,7 @@ function LikeButton() {
     setLiked(true);
   }
 
-  return <Icon onClick={onClick} className={className}/>
+  return <Icon onClick={onClick} className={className} />
 }
 
 function SaveButton() {
@@ -147,7 +147,38 @@ function SaveButton() {
 }
 
 function Comment() {
-  return 'Custom comment'
+
+  const classes = useFeedPostStyles()
+  const [content, setContent] = React.useState('')
+
+
+  return (
+    <div className={classes.commentContainer}>
+      <TextField
+        fullWidth
+        value={content}
+        placeholder="Add a comment..."
+        multiline
+        rowsMax={2}
+        rows={1}
+        onChange={e => setContent(e.target.value)}
+        className={classes.textField}
+        InputProps={{
+          classes: {
+            root: classes.root,
+            underline: classes.underline
+          }
+        }}
+      />
+      <Button
+        color='primary'
+        className={classes.commentButton}
+        disabled={!content.trim()}
+      >
+        Post
+      </Button>
+    </div>
+  )
 }
 
 export default FeedPost;
