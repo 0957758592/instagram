@@ -1,5 +1,7 @@
 # instagram-react12
 
+![img preview](https://image.prntscr.com/image/w72JiYu8Ta6-Ye2Y4N3Ojg.png)
+
 ## Routes (Pages)
 
 - / (feed page)
@@ -58,6 +60,3 @@ Components:
 - ProfilePicture
 - Layout
 - SEO
-
-
-![img preview](https://image.prntscr.com/image/w72JiYu8Ta6-Ye2Y4N3Ojg.png)
