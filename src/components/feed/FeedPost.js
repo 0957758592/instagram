@@ -16,7 +16,7 @@ function FeedPost({ post }) {
       <article className={classes.article}>
         {/* Feed Post Header */}
         <div className={classes.postHeader}>
-          <UserCard />
+          <UserCard user={user}/>
           <MoreIcon
             className={classes.moreIcon}
           />
@@ -58,12 +58,12 @@ function FeedPost({ post }) {
                   <HTMLEllipsis
 
                     unsafeHTML={caption}
-                    classNam={classes.caption}
+                    className={classes.caption}
                     maxLine='0'
                     ellipsis="..."
                     basedOn="letters"
                   />
-                  <Button classNam={classes.moreButton}
+                  <Button className={classes.moreButton}
 
                     onClick={() => setCaption(true)}
                   >
