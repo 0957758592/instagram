@@ -5,18 +5,18 @@ import FeedSideSuggestions from '../components/feed/FeedSideSuggestions'
 import Layout from '../components/shared/Layout'
 import UserCard from '../components/shared/UserCard'
 import { getDefaultPost } from '../data'
-import {Hidden} from "@material-ui/core" 
+import { Hidden } from "@material-ui/core"
 
 function FeedPage() {
   const classes = useFeedPageStyles();
 
   return <Layout>
-    
+
     <div className={classes.container}>
       <div>
         {Array.from({ length: 5 }, () => getDefaultPost()).map(post => (
-            <FeedPost key={post.id} post={post}/>
-          ))
+          <FeedPost key={post.id} post={post} />
+        ))
         }
       </div>
 
@@ -24,13 +24,13 @@ function FeedPage() {
         <div className={classes.sidebarContainer}>
           <div className={classes.sidebarWrapper}>
             <UserCard />
-            <FeedSideSuggestions/>
+            <FeedSideSuggestions />
           </div>
         </div>
       </Hidden>
 
     </div>
-    </Layout>;
+  </Layout>;
 }
 
 export default FeedPage;
