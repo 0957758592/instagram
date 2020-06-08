@@ -1,10 +1,11 @@
 import React from "react";
-import { useNavbarStyles, WhiteTooltip } from "../../styles";
-import { AppBar, Hidden, InputBase, Avatar, Fade, Grid, Typography } from "@material-ui/core";
+import { useNavbarStyles, WhiteTooltip, RedTooltip } from "../../styles";
+import { AppBar, Hidden, InputBase, Avatar, Fade, Grid, Typography, Zoom } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 import logo from "../../images/logo.png";
 import { LoadingIcon, AddIcon, HomeIcon, HomeActiveIcon, ExploreActiveIcon, ExploreIcon, LikeActiveIcon, LikeIcon } from "../../icons";
 import { defaultCurrentUser, getDefaultUser } from "../../data";
+import NotificationTooltip from '../notification/NotificationTooltip'
 
 function Navbar({ minimalNavbar }) {
   const classes = useNavbarStyles();
@@ -121,9 +122,22 @@ function Search({history}) {
 function Links({ path }) {
   const classes = useNavbarStyles()
   const [showList, setList] = React.useState(false)
+  const [showTooltip, setTooltip] = React.useState(true);
+
+  React.useEffect(() => {
+    const timeout = setTimeout(handleHideTolltip, 5000)
+
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [])
 
   function handleToggleList() {
     setList(prev => !prev)
+  }
+
+  function handleHideTolltip(){
+    setTooltip(false)
   }
 
   return (
@@ -138,9 +152,17 @@ function Links({ path }) {
         <Link to="/explore">
           {path === '/explore' ? <ExploreActiveIcon /> : <ExploreIcon />}
         </Link>
+        <RedTooltip
+          arrow
+          open={showTooltip}
+          onOpen={handleHideTolltip}
+              TransitionComponent={Zoom}
+              title={<NotificationTooltip/>}
+        >
         <div className={classes.notification} onClick={handleToggleList}>
           {showList ? <LikeActiveIcon /> : <LikeIcon />}
         </div>
+        </RedTooltip>
         <Link to={`/${defaultCurrentUser.username}`}>
           <div className={path === `/${defaultCurrentUser.username}` ? classes.profileActive : ""}>
           </div>
